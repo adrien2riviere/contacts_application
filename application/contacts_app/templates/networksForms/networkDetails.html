@@ -1,0 +1,19 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'networkDetails.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<br>
+<a href="{% url 'networks' %}">back</a>
+<h2>Social network details</h2>
+    <p><span class="label">First name:</span><span class="info">{{ network.first_name }}</span></p>
+    <p><span class="label">Last name:</span><span class="info">{{ network.last_name }}</span></p>
+    <p><span class="label">Network's name:</span><span class="info">{{ network.network_name}}</span></p>
+    <p><span class="label">User name:</span><span class="info">{{ network.user_name}}</span></p>
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}

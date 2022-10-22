@@ -1,0 +1,19 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'partyDetails.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<br>
+<a href="{% url 'parties' %}">back</a>
+<h2>Party details</h2>
+    <p><span class="label">First name:</span><span class="info">{{ party.first_name }}</span></p>
+    <p><span class="label">Last name:</span><span class="info">{{ party.last_name }}</span></p>
+    <p><span class="label">Kind:</span><span class="info">{{ party.party_name}}</span></p>
+    <p><span class="label">Date:</span><span class="info">{{ party.party_date}}</span></p>
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}
