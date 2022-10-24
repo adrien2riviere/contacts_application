@@ -164,16 +164,17 @@ environ.Env.read_env()
 
 #SMTP CONFIGURATION
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp-mail.outlook.com'
+#EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 #EMAIL_USE_STARTTLS = True
 EMAIL_USE_TLS = True
 SMTP_ENABLED = True
-EMAIL_HOST_USER = 'ad.riv@hotmail.fr'
+EMAIL_HOST_USER = 'adrien.riv45@gmail.com'
 #env('EMAIL_HOST_USER')
-#EMAIL_HOST_PASSWORD = '149'
+EMAIL_HOST_PASSWORD = 'wwpnvufbbbpikrax'
 #'UQJTK-BE39M-EDEUM-N75QL-58BTP'
 #env('EMAIL_HOST_PASSWORD')
 # Custom setting. To email
-RECIPIENT_ADDRESS = 'ad.riv@hotmail.fr'
+#RECIPIENT_ADDRESS = 'ad.riv@hotmail.fr'
 #env('RECIPIENT_ADDRESS')
