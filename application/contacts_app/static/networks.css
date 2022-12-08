@@ -1,0 +1,202 @@
+#networks {
+    background-color: rgb(0, 0, 180)!important;
+}
+
+table {
+    width: 100%;
+    border: solid lightgray;
+}
+
+th, td {
+    padding: 0.5%;
+    text-align: center;
+    width: 20%;
+}
+
+/*.t_button{
+    width: 20%;
+}*/
+
+.colored{
+    background-color: #f2f2f2;
+}
+
+.selected {
+    background-color:gray!important;
+    color:white;
+}
+
+th {
+    background-color: rgb(200, 200, 250);
+}
+
+tr:hover {
+    background-color: lightgray;
+}
+
+.btn_2{
+    font-size: 1em;
+    margin-right:0.25em;
+    margin-left:0.25em;
+    color:white;
+    background-color:rgb(0, 100, 250);
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
+}
+
+.btn_2:hover{
+    background-color:rgb(0, 80, 200);
+}
+
+#search {
+    box-sizing: border-box;/*important*/
+    width: 40%;
+    font-size: 1em;
+    padding: 0.4em;
+    margin-bottom: 1em;
+}
+
+.btn_1 {
+    font-size: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    color:white;
+    font-weight: bold;
+    background-color:rgb(0, 140, 180);
+}
+
+.btn_1:hover{
+    background-color:rgb(0, 120, 160);
+}
+
+#div_table {
+    padding: 2em;
+}
+
+#count_networks{
+    padding-left: 5%;
+    font-weight: bold;
+}
+
+/* -------------------------------*/
+/*  !!! ADD-ON FROM INTERNET !!!  */
+/* -------------------------------*/
+
+#scroll{
+    height: 60vh;
+}
+
+table {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+table thead {
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+table tbody {
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+table tbody tr {
+    width: 100%;
+}
+table thead, table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+
+th {
+    margin-bottom: 0%;
+}
+
+/* ---- !!! +++ !!! ---- */
+/* ---- !!! +++ !!! ---- */
+
+body {
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+thead,tbody {
+    display: block;
+}
+
+
+th, td {
+    border-bottom: 0.02em solid #ddd;
+}
+
+thead {
+    border-right: 0.5em solid white;
+}
+
+/* ------------------------------------------*/
+/*  !!! END OF THE ADD-ON FROM INTERNET !!!  */
+/* ------------------------------------------*/
+
+/* Adapation téléphones */
+
+@media only screen and (max-width: 450px) {
+    #span_menu{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #count_networks{
+        display: block;
+        margin-bottom: 8px;
+    }
+}
+
+td {
+    word-wrap: break-word;
+}
+
+@media only screen and (max-width: 500px) {
+    .user_name {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .network_name {
+        display: none;
+    }
+} 
+
+.t_button td {
+    padding-right: 0.4em;
+}
+
+@media only screen and (max-width: 600px) {
+    thead {
+        border-left: 0.9em solid rgb(200, 200, 250);
+        border-right: 0.9em solid rgb(200, 200, 250);
+    }
+}  
+
+@media only screen and (max-width: 340px) {
+    th {
+        word-wrap: break-word;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .btn_2 {
+        margin-bottom: 4px;
+        margin-top: 4px;
+    }
+}  

@@ -1,0 +1,97 @@
+h2{
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+a {
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
+    color: blue;
+    padding-left: 2em;
+}
+
+a:hover {
+    color:red;
+}
+
+form, p{
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 9em;
+    text-align: left;
+}
+
+input {
+    width: 16em;
+}
+
+img{
+    width: 50%;
+    max-height: 20em;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    text-align: center;
+}
+
+.column_form {
+    width: 40%;
+    float: left;
+}
+
+button {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    background-color: rgb(0, 140, 180);
+    margin-top: 1em;
+}
+
+button:hover {
+    background-color: rgb(0, 120, 160);
+}
+
+/* Adaptations téléphones */
+
+@media only screen and (max-width: 930px) {
+    .column_form {
+        width: 50%;    
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .column_form {
+        width: 60%;    
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    label {
+        display: block;
+    }
+    input {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    input {
+        width: 14em;    
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    input {
+        width: 12em;
+    }
+}

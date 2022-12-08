@@ -1,0 +1,49 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'networks.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div id="div_table">
+    <input type="text" id="search" onkeyup="filter()" placeholder="Search for first names, last names or networks.." title="Type in a name">
+    <a id="add_btn" href="{% url 'addNetwork' %}"><button class="btn_1">add +</button></a>
+    <span id="count_networks">number of networks: {{ count }}</span>
+    <div id="scroll">
+    <table class="table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th class="network_name">Network's name</th>
+                <th class='user_name'>User name</th>
+                <!--<th>Telphone n°2</th>-->
+                <!-- <th>fk</th> -->
+                <th class="t_button">Management</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+        {% for line in networks %}
+        <tr>
+            <td>{{ line.first_name }}</td>
+            <td>{{ line.last_name }}</td>
+            <td class="network_name">{{ line.network_name}}</td>
+            <td class='user_name'>{{ line.user_name}}</td>
+            <!--<td>{{ line.telephone2 }}</td>-->
+            <!-- <td>{{ line.user }}</td> -->
+            <td class="t_button">
+                <a href="{% url 'networkDetails' line.id %}"><button class="btn_2">details</button></a>
+                <a href="{% url 'editNetwork' line.id %}"><button class="btn_2">edit</button></a>
+                <a href="{% url 'deleteNetwork' line.id %}"><button class="btn_2">delete</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+    <script src="{% static 'networks.js' %}"></script>
+{% endblock script %}

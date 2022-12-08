@@ -1,0 +1,30 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'contactDetails.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<br>
+<a href="{% url 'contacts' %}">back</a>
+<h2>Contact details</h2>
+<div class="row">
+    <div class="column">
+        <img alt="picture" src="{{ contact.profile_photo.url }}"/> 
+    </div>
+    <div class="column_form">
+        <label class="label">First name:</label><p class="info">{{ contact.first_name }}</p><br>
+        <label class="label">Last name:</label><p class="info">{{ contact.last_name }}</p><br>
+        <label class="label">E-mail:</label><p class="info">{{ contact.email }}</p><br>
+        <label class="label">Telephone n°1:</label><p class="info">{{ contact.telephone1 }}</p><br>
+        <label class="label">Telephone n°2:</label><p class="info">{{ contact.telephone2 }}</p>
+    </div>
+    <div class="column">
+    </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+{% endblock script %}

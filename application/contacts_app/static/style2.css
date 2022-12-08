@@ -1,0 +1,93 @@
+body{
+    margin: 0px;
+}
+
+#h1_base {
+    margin: 0px;
+    background-color: rgb(200, 200, 250);
+    padding: 2%;
+    text-align: center;
+    font-family: Sans-serif;
+}
+
+/*h2 {
+    text-align: center;
+}*/
+
+/*label {
+    display: inline-block;
+    width: 140px;
+    text-align: left;
+}*/
+
+/*form, p {
+    text-align: center;
+}*/
+
+.helptext{
+    display: block;
+    text-align: center;
+    margin-top:2em;
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}
+
+/*li {
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}*/
+
+/*#message {
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}*/
+
+/*button {
+    font-size: 1em;
+    background-color: #008CBA;
+    color:white
+}*/
+
+.navigation {
+    width: 100%;
+    background-color:rgb(100, 110, 250);
+    overflow: hidden;
+    float: left;
+    margin-bottom: 2em;
+}
+
+#span_menu{
+    float: left;
+    text-align: center;
+    padding: 1%;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.a_menu:not(#log) {
+    float: left;
+    outline: none;
+    padding: 1%;
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.a_menu:hover:not(#log) {
+    background-color: rgb(80, 90, 200);
+  }
+
+#log {
+      float: right;
+      outline: none;
+      padding: 1%;
+      margin-right: 4%;
+      text-decoration: none;
+      color:white;
+      font-size: 1.1em;
+  }
+
+  #log:hover {
+    background-color:red;
+  }

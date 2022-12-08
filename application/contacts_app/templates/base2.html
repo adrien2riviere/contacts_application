@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base_application_page</title>
+    <link rel="stylesheet" href="{% static 'style2.css'%}">
+    {% block css %}
+    {% endblock %}
+</head>
+<body class = "notranslate">
+    <h1 id="h1_base">Contacts Booklet</h1>
+    <div class="navigation">
+        <span id="span_menu">menu:</span>
+        <a id='contacts' class='a_menu' href="{% url 'contacts' %}">contacts</a>
+        <a id='networks' class='a_menu' href="{% url 'networks' %}">networks</a>
+        <a id='parties' class='a_menu' href="{% url 'parties' %}">parties</a>
+        <a id='calendar' class='a_menu' href="">calendar</a>
+        <a id='log' class='a_menu' href="{% url 'logout' %}">log out</a>
+    </div>
+    {% block content %}{% endblock content %}
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
