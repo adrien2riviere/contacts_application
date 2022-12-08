@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-a$6n3w_rz9kx=@+^u^l#121$fe(mh6^kublhj36s*7*8&e@n7r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'geeks',
+    #'geeks',
     'jquery',
     'connection_app',
     'contacts_app',
@@ -106,9 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     #{
     #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     #},
-    #{
-    #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    #},
+    {
+       'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 
@@ -131,7 +132,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static/')
 ]
-STATIC_ROOT=os.path.join(BASE_DIR,'assests') 
+STATIC_ROOT=os.path.join(BASE_DIR,'statics') 
+django_heroku.settings(locals())
 
 
 MEDIA_URL = 'image/'
@@ -156,11 +158,10 @@ LOGOUT_REDIRECT_URL = 'login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
-import environ
+#import environ
 
-env = environ.Env()
-environ.Env.read_env()
-
+#env = environ.Env()
+#environ.Env.read_env()
 
 #SMTP CONFIGURATION
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -171,10 +172,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 SMTP_ENABLED = True
 EMAIL_HOST_USER = 'adrien.riv45@gmail.com'
-#env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = 'wwpnvufbbbpikrax'
-#'UQJTK-BE39M-EDEUM-N75QL-58BTP'
-#env('EMAIL_HOST_PASSWORD')
-# Custom setting. To email
-#RECIPIENT_ADDRESS = 'ad.riv@hotmail.fr'
 #env('RECIPIENT_ADDRESS')

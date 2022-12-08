@@ -9,10 +9,12 @@
 <br>
 <a href="{% url 'networks' %}">back</a>
 <h2>Social network details</h2>
-    <p><span class="label">First name:</span><span class="info">{{ network.first_name }}</span></p>
-    <p><span class="label">Last name:</span><span class="info">{{ network.last_name }}</span></p>
-    <p><span class="label">Network's name:</span><span class="info">{{ network.network_name}}</span></p>
-    <p><span class="label">User name:</span><span class="info">{{ network.user_name}}</span></p>
+<div class="details_form">
+    <label class="label">First name:</label><p class="info">{{ network.first_name }}</p><br>
+    <label class="label">Last name:</label><p class="info">{{ network.last_name }}</p><br>
+    <label class="label">Network's name:</label><p class="info">{{ network.network_name}}</p><br>
+    <label class="label">User name:</label><p class="info">{{ network.user_name}}</p>
+</div>
 {% endblock content %}
 
 {% block script %}

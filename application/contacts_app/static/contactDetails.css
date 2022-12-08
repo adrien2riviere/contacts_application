@@ -17,14 +17,14 @@ a:hover {
 
 p{
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .label{
     display: inline-block;
     text-align: left;
     font-weight: bold;
-    width: 10em;/*++*/
+    width: 8em;/*++*/
 }
 
 .info {
@@ -48,4 +48,27 @@ img{
 .column_form {
     width: 40%;
     float: left;
+    text-align: center;
 }
+
+/* Adapation téléphones */
+
+@media only screen and (max-width: 930px) {
+    .column_form {
+        width: 50%;    
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .column_form {
+        width: 60%;
+    }
+}
+
+/*
+@media only screen and (max-width: 500px) {
+    .label {
+        display: none;
+    }
+}
+*/

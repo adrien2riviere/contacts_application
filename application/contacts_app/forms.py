@@ -11,7 +11,6 @@ from contacts_app.models import Contact, Network, Party
 #    photo = models.ImageField(verbose_name='Picture', upload_to = "image/", blank=True)
 
 
-
 class addContactForm(forms.ModelForm):
     class Meta:
         model = Contact

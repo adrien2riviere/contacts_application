@@ -28,7 +28,10 @@ def addContact(request):
 @login_required
 def contactDetails(request, id):
     contact = Contact.objects.get(id=id)
-    return render(request, 'contactsForms/contactDetails.html', context={'contact' : contact})
+    if request.user.id == contact.fk_user.id :
+        return render(request, 'contactsForms/contactDetails.html', context={'contact' : contact})
+    else :
+        return redirect('contacts')
 
 @login_required
 def editContact(request, id):
@@ -40,25 +43,28 @@ def editContact(request, id):
         "telephone1": contact.telephone1,
         "telephone2": contact.telephone2,
         })
-    if request.method == 'POST':
-        form = editContactForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile_photo = contact.profile_photo
-            contact = form.save(commit=False)
-            contact.fk_user = request.user
-            if contact.profile_photo == 'image/no-image.png':
-                contact.profile_photo = profile_photo
-                contact.id = id
-                contact.save()
-            else:
-                if(profile_photo == 'image/no-image.png'):
+    if request.user.id == contact.fk_user.id :
+        if request.method == 'POST':
+            form = editContactForm(request.POST, request.FILES)
+            if form.is_valid():
+                profile_photo = contact.profile_photo
+                contact = form.save(commit=False)
+                contact.fk_user = request.user
+                if contact.profile_photo == 'image/no-image.png':
+                    contact.profile_photo = profile_photo
                     contact.id = id
                     contact.save()
                 else:
-                    profile_photo.delete(save=False)
-                    contact.id = id
-                    contact.save()
-    return render(request, 'contactsForms/editContact.html', context={'form': form, 'contact': contact})
+                    if(profile_photo == 'image/no-image.png'):
+                        contact.id = id
+                        contact.save()
+                    else:
+                        profile_photo.delete(save=False)
+                        contact.id = id
+                        contact.save()
+        return render(request, 'contactsForms/editContact.html', context={'form': form, 'contact': contact})
+    else :
+        return redirect('contacts')
 
 @login_required
 def deleteContact(request, id):
@@ -92,7 +98,10 @@ def addNetwork(request):
 @login_required
 def networkDetails(request, id):
     network = Network.objects.get(id=id)
-    return render(request, 'networksForms/networkDetails.html', context={'network' : network})
+    if request.user.id == network.fk_user.id :
+        return render(request, 'networksForms/networkDetails.html', context={'network' : network})
+    else :
+        return redirect('contacts')
 
 @login_required
 def editNetwork(request, id):
@@ -103,14 +112,17 @@ def editNetwork(request, id):
         "network_name": network.network_name,
         "user_name": network.user_name
         })
-    if request.method == 'POST':
-        form = editNetworkForm(request.POST, request.FILES)
-        if form.is_valid():
-            network = form.save(commit=False)
-            network.fk_user = request.user
-            network.id = id
-            network.save()
-    return render(request, 'networksForms/editNetwork.html', context={'form': form, 'network': network})
+    if request.user.id == network.fk_user.id :
+        if request.method == 'POST':
+            form = editNetworkForm(request.POST, request.FILES)
+            if form.is_valid():
+                network = form.save(commit=False)
+                network.fk_user = request.user
+                network.id = id
+                network.save()
+        return render(request, 'networksForms/editNetwork.html', context={'form': form, 'network': network})
+    else :
+        return redirect('contacts')
 
 @login_required
 def deleteNetwork(request, id):
@@ -144,7 +156,10 @@ def addParty(request):
 @login_required
 def partyDetails(request, id):
     party = Party.objects.get(id=id)
-    return render(request, 'partiesForms/partyDetails.html', context={'party' : party})
+    if request.user.id == party.fk_user.id :
+        return render(request, 'partiesForms/partyDetails.html', context={'party' : party})
+    else :
+        return redirect('contacts')
 
 @login_required
 def editParty(request, id):
@@ -155,14 +170,17 @@ def editParty(request, id):
         "party_name": party.party_name,
         "party_date": party.party_date,
         })
-    if request.method == 'POST':
-        form = editPartyForm(request.POST, request.FILES)
-        if form.is_valid():
-            party = form.save(commit=False)
-            party.fk_user = request.user
-            party.id = id
-            party.save()
-    return render(request, 'partiesForms/editParty.html', context={'form': form, 'party': party})
+    if request.user.id == party.fk_user.id :
+        if request.method == 'POST':
+            form = editPartyForm(request.POST, request.FILES)
+            if form.is_valid():
+                party = form.save(commit=False)
+                party.fk_user = request.user
+                party.id = id
+                party.save()
+        return render(request, 'partiesForms/editParty.html', context={'form': form, 'party': party})
+    else :
+        return redirect('contacts')
 
 @login_required
 def deleteParty(request, id):

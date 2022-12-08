@@ -17,7 +17,7 @@ a:hover {
 
 p{
    text-align: center;
-   white-space: nowrap;
+   white-space: normal;
 }
 
 .label{
@@ -30,22 +30,22 @@ p{
 .info {
     text-align: left;
     display: inline-block;
-    width: 5em;
+    width: 8em;
+}
+
+
+/* Adaptations téléphones */
+
+
+.details_form {
+    text-align: center;
+    margin-left: 5%;
 }
 
 /*
-img{
-    width: 50%;
-    max-height: 20em;
+@media only screen and (max-width: 400px) {
+    .label {
+        display: none;
+    }
 }
-
-.column {
-    float: left;
-    width: 30%;
-    text-align: center;
-}
-
-.column_form {
-    width: 40%;
-    float: left;
-}*/
+*/

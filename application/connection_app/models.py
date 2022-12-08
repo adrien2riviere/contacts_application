@@ -12,12 +12,14 @@ class User(AbstractUser):
         (SUBSCRIBER, 'Abonné'),
     )
 
-    first_name = models.CharField(max_length=254)
-    last_name = models.CharField(max_length=254)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
 
     profile_photo = models.ImageField(verbose_name='Photo de profil', upload_to='image/', blank=True)
 
     role = models.CharField(max_length=30, choices=ROLE_CHOICES, verbose_name='Rôle', default='Abonné')
+
+    last_login = datetime.now()
 
     REQUIRED_FIELDS = ['first_name','last_name']
 

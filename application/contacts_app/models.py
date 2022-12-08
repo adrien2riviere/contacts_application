@@ -14,7 +14,7 @@ class Contact(models.Model):
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    email = models.EmailField(max_length=50, verbose_name='E-mail', blank=True)
+    email = models.EmailField(max_length=40, verbose_name='E-mail', blank=True)
     telephone1 = models.CharField(max_length=30, verbose_name='telephone n°1', blank=True)
     telephone2 = models.CharField(max_length=30, verbose_name='telephone n°2', blank=True)
     profile_photo = models.ImageField(verbose_name='picture', upload_to='image/', default='image/no-image.png')
@@ -22,7 +22,7 @@ class Contact(models.Model):
     REQUIRED_FIELDS = ['first_name','last_name']
 
     def __str__(self):
-        return f'{self.id} : {self.first_name} {self.last_name} ({self.fk_user})'
+        return f'{self.id} : {self.first_name} {self.last_name} ({self.fk_user.username})'
 
 
 class Network(models.Model):
@@ -36,7 +36,7 @@ class Network(models.Model):
     REQUIRED_FIELDS = ['first_name','last_name', 'network_name']
 
     def __str__(self):
-        return f'{self.id} : {self.first_name} {self.last_name} {self.network_name} ({self.fk_user})'
+        return f'{self.id} : {self.first_name} {self.last_name} {self.network_name} ({self.fk_user.username})'
 
 
 class Party(models.Model):
@@ -50,4 +50,4 @@ class Party(models.Model):
     REQUIRED_FIELDS = ['first_name','last_name', 'party_name', 'date']
 
     def __str__(self):
-        return f'{self.id} : {self.first_name} {self.last_name} {self.party_name} {self.party_date} ({self.fk_user})'
+        return f'{self.id} : {self.first_name} {self.last_name} {self.party_name} {self.party_date} ({self.fk_user.username})'

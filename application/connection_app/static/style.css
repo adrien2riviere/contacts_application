@@ -32,6 +32,10 @@ form, p {
     font-weight:bold;
 }
 
+ul {
+    list-style-type: none;
+}
+
 li {
     font-family: "Roboto", "Lucida Grande";
     font-weight:bold;
@@ -50,4 +54,13 @@ button {
 
 button:hover {
     background-color: rgb(0, 110, 160);
+}
+
+.errorlist {
+    color: darkorange;
+}
+
+#back {
+   margin-left: 2%;
+   text-align: left;
 }

@@ -17,7 +17,7 @@ a:hover {
 
 p{
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 
@@ -31,22 +31,34 @@ p{
 .info {
     text-align: left;
     display: inline-block;
-    width: 8em;
+    width: 10em;
+}
+
+/* Adaptations téléphones */
+
+.details_form {
+    text-align: center;
+    margin-left: 5%;
+}
+
+@media only screen and (max-width: 800px) {
+    .details_form {
+        margin-left: 10%;
+    }
+    .label{
+        width: 9em;
+    }
+    
+    .info {
+        width: 9em;
+    }
 }
 
 /*
-img{
-    width: 50%;
-    max-height: 20em;
+@media only screen and (max-width: 400px) {
+    .label {
+        display: none;
+    }
 }
+*/
 
-.column {
-    float: left;
-    width: 30%;
-    text-align: center;
-}
-
-.column_form {
-    width: 40%;
-    float: left;
-}*/
