@@ -9,9 +9,6 @@
     <br>
     <a href="{% url 'contacts' %}">back</a>
     <h2>Add a contact</h2>
-    {% if form.errors %}
-        {{ form.errors }}
-    {% endif %}
     <div class="row">
         <div class="column">
             <img id="image" alt="picture" src="/image/image/no-image.png"/>

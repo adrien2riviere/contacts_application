@@ -1,0 +1,24 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'eventDetails.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <a href="{% url 'calendar' page %}">back</a>
+    <h2>Past event details</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label id="date_label">Date: </label><p id="date">{{event.Date|date:'d/m/Y'}}</p>
+        </div>
+        <div id="div_label">
+            <label id="text_label">Text: </label><div id="text">{{ event.Text }}</div>
+        </div>
+    </form>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'manageEvent.js' %}"></script>
+{% endblock script %}

@@ -53,6 +53,12 @@ urlpatterns = [
     path('parties/edit/<int:id>/', contacts_app.views.editParty, name="editParty"),
     path('parties/deleteParty/<int:id>/', contacts_app.views.deleteParty, name="deleteParty"),
 
+    path('calendar/<int:page>', contacts_app.views.calendar, name="calendar"),
+    path('calendar/addEvent/<str:date>/<int:page>', contacts_app.views.addEvent, name="addEvent"),
+    path('calendar/manageEvent/<int:id>/<int:page>', contacts_app.views.manageEvent, name="manageEvent"),
+    path('calendar/eventDetails/<int:id>/<int:page>', contacts_app.views.eventDetails, name="eventDetails"),
+    path('calendar/noEvent/<int:page>', contacts_app.views.noEvent, name="noEvent"),
+    path('calendar/deleteEvent/<int:id>/<int:page>', contacts_app.views.deleteEvent, name="deleteEvent"),
 ]
 
 if settings.DEBUG:

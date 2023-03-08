@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'geeks',
     'jquery',
-    'connection_app',
-    'contacts_app',
+    'connection_app', # la partie connexion
+    'contacts_app', # la partie gestion des contacts
     'django_dbconn_retry',
     'django_cleanup.apps.CleanupConfig',
     #'django_registration',# ---> Should make the field in english when models recreate again
@@ -84,9 +84,20 @@ WSGI_APPLICATION = 'application.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+    #}
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'contacts_db',  
+        'USER': 'root',  
+        'PASSWORD': 'root',  
+        'HOST': '127.0.0.1',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
     }
 }
 
@@ -101,14 +112,14 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 8,
+            'min_length': 8, # un mot de passe d'au moins 8 charactère
         }
     },
     #{
     #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     #},
     {
-       'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+       'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', # au moins un charactère non numérique
     },
 ]
 
@@ -136,7 +147,7 @@ STATIC_ROOT=os.path.join(BASE_DIR,'statics')
 django_heroku.settings(locals())
 
 
-MEDIA_URL = 'image/'
+MEDIA_URL = 'image/' # définit le répertoire des images
 MEDIA_ROOT = os.path.join('')
 
 
@@ -150,12 +161,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'connection_app.User'
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'login' # définit l'url de la page de connection
 
-LOGIN_REDIRECT_URL = '/contacts'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = '/contacts' # définit l'url de renvoie une fois connecté
+LOGOUT_REDIRECT_URL = 'login' # définit l'url de renvoie une fois deconnecté
 
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True # la session se ferme à la fermeture du navigateur
 
 
 #import environ
@@ -169,7 +180,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 #EMAIL_USE_STARTTLS = True
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = True # protocole TLS pour l'envoi d'email
 SMTP_ENABLED = True
 EMAIL_HOST_USER = 'adrien.riv45@gmail.com'
 EMAIL_HOST_PASSWORD = 'wwpnvufbbbpikrax'

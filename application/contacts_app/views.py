@@ -1,15 +1,28 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from contacts_app.models import Contact, Network, Party
+from contacts_app.models import Contact, Network, Party, Event
 
 from .forms import addContactForm, editContactForm
 from .forms import addNetworkForm, editNetworkForm
 from .forms import addPartyForm, editPartyForm
+from .forms import eventForm
+
+from django.db.models.functions import Lower
+
+import datetime
 
 # Create your views here.
 @login_required
 def contacts(request):
-    contacts = Contact.objects.filter(fk_user=request.user.id).order_by('first_name', 'last_name')
+    events = Event.objects.filter(fk_user=request.user.id)
+    # delete the old events !!
+    for e in events:
+        date_now = datetime.datetime.now()
+        date_from_now = datetime.datetime(date_now.year, date_now.month-1, 1)
+        date_from_event = datetime.datetime(e.Date.year, e.Date.month, 1)
+        if(date_from_event < date_from_now):
+            e.delete()
+    contacts = Contact.objects.filter(fk_user=request.user.id).order_by(Lower('first_name'), Lower('last_name'))
     count = contacts.count()
     return render(request, 'contacts_app/contacts.html', context={'contacts' : contacts, 'count': count})
 
@@ -69,17 +82,19 @@ def editContact(request, id):
 @login_required
 def deleteContact(request, id):
     contact = Contact.objects.get(id=id)
-    if 'deleteThat' in request.POST:
-        contact.delete()
-    if request.method == 'POST':
+    if request.user.id == contact.fk_user.id :
+        if 'deleteThat' in request.POST:
+            contact.delete()
+        if request.method == 'POST':
+            return redirect('contacts')
+        return render(request, 'contactsForms/deleteContact.html', context={'contact': contact})
+    else :
         return redirect('contacts')
-    return render(request, 'contactsForms/deleteContact.html', context={'contact': contact})
-
 
 
 @login_required
 def networks(request):
-    networks = Network.objects.filter(fk_user=request.user.id).order_by('first_name', 'last_name')
+    networks = Network.objects.filter(fk_user=request.user.id).order_by(Lower('first_name'), Lower('last_name'))
     count = networks.count()
     return render(request, 'contacts_app/networks.html', context={'networks' : networks, 'count': count})
 
@@ -127,17 +142,19 @@ def editNetwork(request, id):
 @login_required
 def deleteNetwork(request, id):
     network = Network.objects.get(id=id)
-    if 'deleteThat' in request.POST:
-        network.delete()
-    if request.method == 'POST':
-        return redirect('networks')
-    return render(request, 'networksForms/deleteNetwork.html', context={'network': network})
-
+    if request.user.id == network.fk_user.id :
+        if 'deleteThat' in request.POST:
+            network.delete()
+        if request.method == 'POST':
+            return redirect('networks')
+        return render(request, 'networksForms/deleteNetwork.html', context={'network': network})
+    else :
+        return redirect('contacts')
 
 
 @login_required
 def parties(request):
-    parties = Party.objects.filter(fk_user=request.user.id).order_by('first_name', 'last_name')
+    parties = Party.objects.filter(fk_user=request.user.id).order_by(Lower('first_name'), Lower('last_name'))
     count = parties.count()
     return render(request, 'contacts_app/parties.html', context={'parties' : parties, 'count': count})
 
@@ -185,8 +202,78 @@ def editParty(request, id):
 @login_required
 def deleteParty(request, id):
     party = Party.objects.get(id=id)
-    if 'deleteThat' in request.POST:
-        party.delete()
-    if request.method == 'POST':
-        return redirect('parties')
-    return render(request, 'partiesForms/deleteParty.html', context={'party': party})
+    if request.user.id == party.fk_user.id :
+        if 'deleteThat' in request.POST:
+            party.delete()
+        if request.method == 'POST':
+            return redirect('parties')
+        return render(request, 'partiesForms/deleteParty.html', context={'party': party})
+    else :
+        return redirect('contacts')
+
+
+@login_required
+def calendar(request, page):
+    events = Event.objects.filter(fk_user=request.user.id).order_by('Date')
+    count = events.count()
+    return render(request, 'contacts_app/calendar.html', context={'events' : events, 'count': count, 'page': page})
+
+@login_required
+def addEvent(request, date, page):
+    form = eventForm()
+    if request.method == "POST":
+        form = eventForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.Date = datetime.datetime(int(date[6:10]), int(date[3:5]), int(date[0:2]))
+            event.fk_user = request.user
+            event.save()
+            return redirect('calendar', page)
+    return render(request, 'calendarForms/addEvent.html', context={'form' : form, 'date': date, 'page': page})
+
+@login_required
+def manageEvent(request, id, page):
+    event = Event.objects.get(id=id)
+    form = eventForm(initial={
+        "Text": event.Text,
+        })
+    if request.user.id == event.fk_user.id :
+        if request.method == 'POST':
+            form = eventForm(request.POST)
+            date = event.Date
+            if form.is_valid():
+                event = form.save(commit=False)
+                event.Date = date
+                event.fk_user = request.user
+                event.id = id
+                event.save()
+        return render(request, 'calendarForms/manageEvent.html', context={'form': form, 'event': event, 'page': page})
+    else :
+        return redirect('contacts')
+
+@login_required
+def eventDetails(request, id, page):
+    event = Event.objects.get(id=id)
+    if request.user.id == event.fk_user.id :
+        return render(request, 'calendarForms/eventDetails.html', context={'event' : event, 'page': page})
+    else :
+        return redirect('contacts')
+
+@login_required
+def noEvent(request, page):
+    return render(request, 'calendarForms/noEvent.html', context={'page': page})
+
+@login_required
+def deleteEvent(request, id, page):
+    event = Event.objects.get(id=id)
+    if request.user.id == event.fk_user.id :
+        date = event.Date.strftime("%d/%m/%Y")
+        if 'deleteThat' in request.POST:
+            event.delete()
+            return redirect('calendar', page)
+        if 'btn_cancel' in request.POST:
+            return redirect('manageEvent', id, page)
+        return render(request, 'calendarForms/deleteEvent.html', context={'date': date, 'page' : page})
+    else :
+        return redirect('contacts')
+

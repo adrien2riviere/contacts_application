@@ -17,7 +17,7 @@
         <a id='contacts' class='a_menu' href="{% url 'contacts' %}">contacts</a>
         <a id='networks' class='a_menu' href="{% url 'networks' %}">networks</a>
         <a id='parties' class='a_menu' href="{% url 'parties' %}">parties</a>
-        <a id='calendar' class='a_menu' href="">calendar</a>
+        <a id='calendar' class='a_menu' href="{% url 'calendar' 1 %}">calendar</a>
         <a id='log' class='a_menu' href="{% url 'logout' %}">log out</a>
     </div>
     {% block content %}{% endblock content %}

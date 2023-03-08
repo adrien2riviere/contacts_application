@@ -51,3 +51,15 @@ class Party(models.Model):
 
     def __str__(self):
         return f'{self.id} : {self.first_name} {self.last_name} {self.party_name} {self.party_date} ({self.fk_user.username})'
+
+
+class Event(models.Model):
+
+    Text = models.TextField(max_length=204)
+    Date = models.DateField(max_length=30)
+    fk_user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    REQUIRED_FIELDS = ['Text','Date']
+
+    def __str__(self):
+        return f'{self.id} : {self.Date} ({self.fk_user.username})'

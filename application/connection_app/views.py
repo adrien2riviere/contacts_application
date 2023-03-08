@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 
 from . import forms
+from contacts_app.models import Event
+
 
 # Create your views here.
 @login_required
@@ -43,6 +45,5 @@ def signup_page(request):
         if form.is_valid():
             user = form.save()
             # auto-login user
-            login(request, user)
             return redirect('login')
     return render(request, 'connection_app/signup.html', context={'form': form})

@@ -1,0 +1,105 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'calendar.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div id="label_calendar">
+    <button class="date_btn" onclick='previous()'> < </button>
+    <span id = 'date'></span>
+    <button id = "right" class="date_btn" onclick='next()'> > </button>
+    <div id="span_group">
+        <span id="count_events">number of events: {{ count }}</span>
+        <span id="page_numero"></span>
+    </div>    
+</div>
+<div id="scroll">
+    <table class="table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+                <td><span class="numero"></span><div class="task_text"></div></td>
+            </tr>
+            <tr>
+                {% for e in events %}
+                <td>
+                    <p>{{ e.id }}</p>
+                    <p>{{ e.Date.year }}</p>
+                    <p>{{ e.Date.month }}</p>
+                    <p>{{ e.Date.day }}</p>
+                    <p>{{ e.Text }}</p>
+                </td>
+                {% endfor %}
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'calendar.js' %}"></script>
+{% endblock script %}

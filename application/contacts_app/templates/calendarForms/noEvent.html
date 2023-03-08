@@ -1,0 +1,13 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'noEvent.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <a href="{% url 'calendar' page %}">back</a>
+    <h2>Past event details</h2>
+    <p id="no_event">There is no event for this day !</p>
+{% endblock content %}

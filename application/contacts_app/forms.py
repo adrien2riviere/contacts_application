@@ -1,5 +1,6 @@
+#from multiprocessing import Event
 from django import forms
-from contacts_app.models import Contact, Network, Party
+from contacts_app.models import Contact, Network, Party, Event
 
 
 #class addContactForm(forms.Form):
@@ -57,3 +58,9 @@ class deletePartyForm(forms.ModelForm):
     class Meta:
         model = Party
         fields = ()
+
+
+class eventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ('Text',)
