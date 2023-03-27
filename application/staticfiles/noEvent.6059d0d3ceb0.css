@@ -1,0 +1,30 @@
+h2{
+    text-align: center;
+    padding-bottom: 1.5em;
+}
+
+a {
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
+    color: blue;
+    padding-left: 2em;
+}
+
+a:hover {
+    color:red;
+}
+
+form{
+    text-align: center;
+}
+
+label{
+    vertical-align: top;
+    margin-bottom:1em;
+}
+
+#no_event{
+    text-align: center;
+    color:red;
+}
