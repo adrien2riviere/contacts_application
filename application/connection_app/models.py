@@ -7,7 +7,11 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
+<<<<<<< HEAD
     #profile_photo = models.ImageField(verbose_name='Photo de profil', upload_to='image/', blank=True)
+=======
+    profile_photo = models.ImageField(verbose_name='Photo de profil', upload_to='image/', blank=True)
+>>>>>>> e3e584df (<message>)
 
     last_login = datetime.now()
 

@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 
 from . import forms
+from contacts_app.models import Event
+
 
 
 # Create your views here.

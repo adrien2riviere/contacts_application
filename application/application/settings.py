@@ -98,10 +98,14 @@ DATABASES = {
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
+<<<<<<< HEAD
     },
     #'TEST': {
     #        'NAME': 'test_db',
     #},
+=======
+    }
+>>>>>>> e3e584df (<message>)
 }
 
 
@@ -166,7 +170,11 @@ AUTH_USER_MODEL = 'connection_app.User'
 
 LOGIN_URL = 'login' # définit l'url de la page de connection
 
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = 'contacts' # définit l'url de renvoie une fois connecté
+=======
+LOGIN_REDIRECT_URL = '/contacts' # définit l'url de renvoie une fois connecté
+>>>>>>> e3e584df (<message>)
 LOGOUT_REDIRECT_URL = 'login' # définit l'url de renvoie une fois deconnecté
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True # la session se ferme à la fermeture du navigateur

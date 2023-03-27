@@ -9,7 +9,11 @@ var day = today.getDate() /*var weekday = today.toLocaleDateString(locale, { wee
 d = new Date(year, month, day)
 dates = []
 for (let i = -1; i <= 6; i++) {
+<<<<<<< HEAD
     date = new Date(year, month+i, 1)
+=======
+    date = new Date(year, month+i, day)
+>>>>>>> e3e584df (<message>)
     dates.push(date)
 }
 
@@ -24,7 +28,11 @@ for (let i = 0; i < td_list.length; i++) {
     id_value = parseInt(p_list[0].innerText)
     id_list.push(id_value)
     year_value = parseInt(p_list[1].innerText), month_value = parseInt(p_list[2].innerText), day_value = parseInt(p_list[3].innerText)
+<<<<<<< HEAD
     date_value = new Date(year_value, month_value-1, day_value) 
+=======
+    date_value = new Date(year_value, month_value, day_value) 
+>>>>>>> e3e584df (<message>)
     date_list.push(date_value)
     text_list.push(p_list[4].innerText)
 }
@@ -43,14 +51,22 @@ function previous(){
         dateindique.innerText = dates[i_date].toLocaleString('en-GB', { month: 'long' }) + ' ' + dates[i_date].getFullYear();
     }
     if(i_date == 0){
+<<<<<<< HEAD
         pageindique.innerText = '(' + String(i_date-1) + ')';
+=======
+        pageindique.innerText = '(-1)';
+>>>>>>> e3e584df (<message>)
     }
     if(i_date == 1){
         pageindique.innerText = '';
     }
     if(i_date > 1){
         pageindique.innerText = '(+' + String(i_date-1) + ')';
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> e3e584df (<message>)
     completer()
 }
 function next(){
@@ -59,7 +75,11 @@ function next(){
         dateindique.innerText = dates[i_date].toLocaleString('en-GB', { month: 'long' }) + ' ' + dates[i_date].getFullYear();
     }
     if(i_date == 0){
+<<<<<<< HEAD
         pageindique.innerText = '(' + String(i_date-1) + ')';
+=======
+        pageindique.innerText = '(-1)';
+>>>>>>> e3e584df (<message>)
     }
     if(i_date == 1){
         pageindique.innerText = '';
@@ -76,6 +96,7 @@ function completer(){
     var td_list2 = document.getElementsByTagName("td");
     let i_day = 0;
     let active = false;
+<<<<<<< HEAD
     /*d = new Date(dates[i_date].getFullYear(), dates[i_date].getMonth(), 1) */
     for(let i = 0; i < td_list2.length; i++){
         td_element = td_list2[i]
@@ -86,6 +107,18 @@ function completer(){
             active = false;
         }
         if(i_day+1 > 29 && dates[i_date].getMonth() == 1 && (dates[i_date].getFullYear() - 1972)%4 == 0){
+=======
+    d = new Date(dates[i_date].getFullYear(), dates[i_date].getMonth(), 0) 
+    for(let i = 0; i < td_list2.length; i++){
+        td_element = td_list2[i]
+        if(d.getDay() <= i){
+            active = true;
+        }
+        if(i_day+1 > 28 && dates[i_date].getMonth() == 1 && (d.getFullYear() - 1972)%4 !=0){
+            active = false;
+        }
+        if(i_day+1 > 29 && dates[i_date].getMonth() == 1 && (d.getFullYear() - 1972)%4 == 0){
+>>>>>>> e3e584df (<message>)
             active = false;
         }
         if(i_day+1 > 30 && [3,5,8,10].includes(dates[i_date].getMonth())){
@@ -98,20 +131,26 @@ function completer(){
             td_element.className = 'unused_case';
             span_numero = td_element.getElementsByTagName('span')[0]
             span_numero.innerText = '';
+<<<<<<< HEAD
             div_text = td_element.getElementsByClassName('task_text')[0]
             div_text.innerText = ''
             span_element = td_element.getElementsByTagName('span')[0]
             span_element.className = 'numero'
+=======
+>>>>>>> e3e584df (<message>)
         }
         if(active){
             i_day += 1
             td_element.className = 'futur_case';
             span_numero = td_element.getElementsByTagName('span')[0]
             span_numero.innerText = i_day;
+<<<<<<< HEAD
             div_text = td_element.getElementsByClassName('task_text')[0]
             div_text.innerText = '';
             span_element = td_element.getElementsByTagName('span')[0]
             span_element.className = 'numero'
+=======
+>>>>>>> e3e584df (<message>)
             colorer(td_element, i_day)
             add_task(td_element, i_day, dates[i_date].getMonth(), dates[i_date].getFullYear())
         }
@@ -141,7 +180,11 @@ function colorer(td_element, i_day){
 /*Ajouter les evénements dans les cases du calendrier */
 function add_task(td_element, i_day, i_month, i_year){
     for(let i = 0; i < td_list.length; i++){
+<<<<<<< HEAD
         event_day = date_list[i].getDate(), event_month = date_list[i].getMonth(), event_year = date_list[i].getFullYear()
+=======
+        event_day = date_list[i].getDate(), event_month = date_list[i].getMonth()-1, event_year = date_list[i].getFullYear()
+>>>>>>> e3e584df (<message>)
         div_text = td_element.getElementsByClassName('task_text')[0]
         if(i_month == event_month && i_year == event_year && i_day == event_day){
             div_text.innerText = text_list[i]
@@ -184,7 +227,11 @@ function click_redirection(e) {
             if(date_list[i].getFullYear() == dates[ii].getFullYear()){
                 check_value +=1;
             }
+<<<<<<< HEAD
             if(date_list[i].getMonth() == dates[ii].getMonth()){
+=======
+            if(date_list[i].getMonth()-1 == dates[ii].getMonth()){
+>>>>>>> e3e584df (<message>)
                 check_value +=1;
             }
             if(date_list[i].getDate() == e.target.getElementsByClassName('numero')[0].innerText){
@@ -203,7 +250,11 @@ function click_redirection(e) {
             if(date_list[i].getFullYear() == dates[ii].getFullYear()){
                 check_value +=1;
             }
+<<<<<<< HEAD
             if(date_list[i].getMonth() == dates[ii].getMonth()){
+=======
+            if(date_list[i].getMonth()-1 == dates[ii].getMonth()){
+>>>>>>> e3e584df (<message>)
                 check_value +=1;
             }
             if(date_list[i].getDate() == e.target.parentNode.getElementsByClassName('numero')[0].innerText){
@@ -236,7 +287,11 @@ function click_redirection(e) {
             if(date_list[i].getFullYear() == dates[ii].getFullYear()){
                 check_value +=1;
             }
+<<<<<<< HEAD
             if(date_list[i].getMonth() == dates[ii].getMonth()){
+=======
+            if(date_list[i].getMonth()-1 == dates[ii].getMonth()){
+>>>>>>> e3e584df (<message>)
                 check_value +=1;
             }
             if(date_list[i].getDate() == e.target.getElementsByClassName('numero')[0].innerText){
@@ -255,7 +310,11 @@ function click_redirection(e) {
             if(date_list[i].getFullYear() == dates[ii].getFullYear()){
                 check_value +=1;
             }
+<<<<<<< HEAD
             if(date_list[i].getMonth() == dates[ii].getMonth()){
+=======
+            if(date_list[i].getMonth()-1 == dates[ii].getMonth()){
+>>>>>>> e3e584df (<message>)
                 check_value +=1;
             }
             if(date_list[i].getDate() == e.target.parentNode.getElementsByClassName('numero')[0].innerText){
@@ -281,6 +340,10 @@ if(i_element > 1){
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3e584df (<message>)
 /* responsive for telephone and tablette*/
 let width = screen.width;
 if(width < 650){
