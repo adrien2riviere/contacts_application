@@ -1,0 +1,66 @@
+body{
+    margin: 0px;
+}
+
+h1 {
+    margin: 0px;
+    background-color: rgb(200, 200, 250);
+    padding: 2%;
+    text-align: center;
+    font-family: Sans-serif;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: left;
+}
+
+form, p {
+    text-align: center;
+}
+
+.helptext{
+    display: block;
+    text-align: center;
+    margin-top:2em;
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}
+
+#message {
+    font-family: "Roboto", "Lucida Grande";
+    font-weight:bold;
+}
+
+button {
+    font-size: 1em;
+    background-color: #008CBA;
+    color:white
+}
+
+button:hover {
+    background-color: rgb(0, 110, 160);
+}
+
+.errorlist {
+    color: darkorange;
+}
+
+#back {
+   margin-left: 2%;
+   text-align: left;
+}
