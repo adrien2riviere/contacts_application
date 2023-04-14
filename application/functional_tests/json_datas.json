@@ -1,0 +1,163 @@
+{
+    "Contacts" :   [ 
+        {
+            "id": 1, "first_name" : "Jeanne", "last_name" : "LXXXXX", "email" : "lxxxxx@gmail.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 2, "first_name" : "Aurelie", "last_name" : "LXXXXX", "email" : "axxxxx@live.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 3, "first_name" : "Amine", "last_name" : "BXXXXX", "email" : "axxxxx@live.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 4, "first_name" : "Bob", "last_name" : "KXXXXX", "email" : "kxxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 5, "first_name" : "Fabien", "last_name" : "MXXXXX", "email" : "mxxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 6, "first_name" : "Vanessa", "last_name" : "JXXXXX", "email" : "vxxxxx@gmail.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 7, "first_name" : "Vivien", "last_name" : "ZXXXXX", "email" : "zxxxxx@live.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 8, "first_name" : "Scarlet", "last_name" : "JXXXXX", "email" : "jxxxxx@live.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 9, "first_name" : "Melina", "last_name" : "CXXXXX", "email" : "mxxxxx@live.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 10, "first_name" : "Mathieu", "last_name" : "TXXXXX", "email" : "txxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 11, "first_name" : "Jonathan", "last_name" : "GXXXXX", "email" : "jxxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 12, "first_name" : "Cyprien", "last_name" : "AXXXXX", "email" : "cxxxxx@gmail.com", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 13, "first_name" : "Raphael", "last_name" : "BXXXXX", "email" : "bxxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 14, "first_name" : "Clementine", "last_name" : "JXXXXX", "email" : "cxxxxx@hotmail.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        },
+        {
+            "id": 15, "first_name" : "Zoe", "last_name" : "EXXXXX", "email" : "zxxxxx@live.fr", "telephone1":"06 00 00 00 01", "telephone2":"02 00 00 00 01", "profile_photo": "/image/no-image.png", "fk_user": "1"
+        }
+    ],
+
+    "Networks" :   [ 
+        {
+            "id": 1, "first_name" : "Jeanne", "last_name" : "LXXXXX", "network_name" : "Facebook", "user_name":"jxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 2, "first_name" : "Aurelie", "last_name" : "LXXXXX", "network_name" : "Facebook", "user_name":"axxxxx", "fk_user": "1"
+        },
+        {
+            "id": 3, "first_name" : "Aurelie", "last_name" : "BXXXXX", "network_name" : "Linkedin", "user_name":"axxxxx", "fk_user": "1"
+        },
+        {
+            "id": 4, "first_name" : "Bob", "last_name" : "KXXXXX", "network_name" : "Facebook", "user_name":"bxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 5, "first_name" : "Teo", "last_name" : "ZXXXXX", "network_name" : "Tik Tok", "user_name":"zxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 6, "first_name" : "Vanessa", "last_name" : "JXXXXX", "network_name" : "Facebook", "user_name":"vxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 7, "first_name" : "Vivien", "last_name" : "ZXXXXX", "network_name" : "What's app", "user_name":"vxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 8, "first_name" : "Vivien", "last_name" : "ZXXXXX", "network_name" : "Linkedin", "user_name":"zxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 9, "first_name" : "Melina", "last_name" : "CXXXXX", "network_name" : "What's app", "user_name":"mxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 10, "first_name" : "Melina", "last_name" : "TXXXXX", "network_name" : "Facebook", "user_name":"mxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 11, "first_name" : "Jonathan", "last_name" : "GXXXXX", "network_name" : "Linkedin", "user_name":"gxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 12, "first_name" : "Clement", "last_name" : "AXXXXX", "network_name" : "Tik Tok", "user_name":"cxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 13, "first_name" : "Raphael", "last_name" : "BXXXXX", "network_name" : "Astagram", "user_name":"rxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 14, "first_name" : "Clementine", "last_name" : "JXXXXX", "network_name" : "Facebook", "user_name":"cxxxxx", "fk_user": "1"
+        },
+        {
+            "id": 15, "first_name" : "Alice", "last_name" : "MXXXXX", "network_name" : "Linkedin", "user_name":"exxxxx", "fk_user": "1"
+        }
+    ],
+    
+    "Parties" :   [ 
+        {
+            "id": 1, "first_name" : "Jeanne", "last_name" : "LXXXXX", "party_name" : "Birthday", "party_date":"06 avril", "fk_user": "1"
+        },
+        {
+            "id": 2, "first_name" : "Aurelie", "last_name" : "LXXXXX", "party_name" : "St Valentin", "party_date":"14 Fevrier", "fk_user": "1"
+        },
+        {
+            "id": 3, "first_name" : "Aurelie", "last_name" : "LXXXXX", "party_name" : "Birthday", "party_date":"01 decembre", "fk_user": "1"
+        },
+        {
+            "id": 4, "first_name" : "Aurelie", "last_name" : "LXXXXX", "party_name" : "Sainte Aurelie", "party_date":"15 octobre", "fk_user": "1"
+        },
+        {
+            "id": 5, "first_name" : "Fabien", "last_name" : "MXXXXX", "party_name" : "Birthday", "party_date":"23 aout", "fk_user": "1"
+        },
+        {
+            "id": 6, "first_name" : "Vanessa", "last_name" : "JXXXXX", "party_name" : "Birthday", "party_date":"08 mars", "fk_user": "1"
+        },
+        {
+            "id": 7, "first_name" : "Vivien", "last_name" : "ZXXXXX", "party_name" : "Bowling", "party_date":"06 Juin", "fk_user": "1"
+        },
+        {
+            "id": 8, "first_name" : "Scarlet", "last_name" : "JXXXXX", "party_name" : "Fete du Theatre", "party_date":"19 avril", "fk_user": "1"
+        },
+        {
+            "id": 9, "first_name" : "Melina", "last_name" : "CXXXXX", "party_name" : "Birthday", "party_date":"09 novembre", "fk_user": "1"
+        },
+        {
+            "id": 10, "first_name" : "Mathieu", "last_name" : "TXXXXX", "party_name" : "Birthday", "party_date":"04 Juin", "fk_user": "1"
+        },
+        {
+            "id": 11, "first_name" : "Joel", "last_name" : "NXXXXX", "party_name" : "Birthday", "party_date":"09 juin", "fk_user": "1"
+        },
+        {
+            "id": 12, "first_name" : "Cyprien", "last_name" : "AXXXXX", "party_name" : "Birthday", "party_date":"03 mai", "fk_user": "1"
+        },
+        {
+            "id": 13, "first_name" : "Raphael", "last_name" : "BXXXXX", "party_name" : "Birthday", "party_date":"19 septembre", "fk_user": "1"
+        },
+        {
+            "id": 14, "first_name" : "Clemence", "last_name" : "DXXXXX", "party_name" : "Birthday", "party_date":"30  aout", "fk_user": "1"
+        },
+        {
+            "id": 15, "first_name" : "Zoe", "last_name" : "EXXXXX", "party_name" : "Birthday", "party_date":"06 avril", "fk_user": "1"
+        }
+    ],
+
+    "Events" :   [ 
+        {
+            "id": 1, "Text" : "Search Milk 14h", "Date" : "01/01/2023", "fk_user": "1"
+        },
+        {
+            "id": 2, "Text" : "General Pratictioner 10h", "Date" : "01/01/2023", "fk_user": "1"
+        },
+        {
+            "id": 3, "Text" : "Judo competition 15h", "Date" : "01/01/2023", "fk_user": "1"
+        },
+        {
+            "id": 4, "Text" : "Anniv Florent 18h", "Date" : "01/01/2023", "fk_user": "1"
+        },
+        {
+            "id": 5, "Text" : "Cinéma William 18h20", "Date" : "01/01/2023", "fk_user": "1"
+        }
+    ]
+}

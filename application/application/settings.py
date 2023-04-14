@@ -112,14 +112,14 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_length': 8, # un mot de passe d'au moins 8 charactère
+            'min_length': 8, # un mot de passe d'au moins 8 caractères
         }
     },
     #{
     #    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     #},
     {
-       'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', # au moins un charactère non numérique
+       'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', # au moins un caractère non numérique
     },
 ]
 
@@ -185,3 +185,6 @@ SMTP_ENABLED = True
 EMAIL_HOST_USER = 'adrien.riv45@gmail.com'
 EMAIL_HOST_PASSWORD = 'wwpnvufbbbpikrax'
 #env('RECIPIENT_ADDRESS')
+
+
+#SELENIUM_LOGIN_START_PAGE = '' #pour definir la redirection quand login par selenium

@@ -7,7 +7,6 @@ from django.urls import reverse
 import time
 from contacts_app.models import Contact
 
-
 class Test0Contact(LiveServerTestCase):
 
     # mettre en place les urls
@@ -44,89 +43,76 @@ class Test0Contact(LiveServerTestCase):
         self.browser.find_elements('tag name', 'input')[1].send_keys('password1')
         self.browser.find_element('tag name', 'button').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.contacts_url)
-        text = self.browser.find_element('id', 'contacts').text
-        self.assertEqual(text, 'contacts')
+        self.assertIn('number of contacts:', self.browser.find_element('id', 'count_contacts').text)
         time.sleep(1)
 
         # accéder à la page addContact
         self.browser.find_element('id', 'add_btn').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
-        text = self.browser.find_element('tag name', 'h2').text
-        self.assertEqual(text, 'Add a contact')
+        self.assertEqual(self.browser.find_element('tag name', 'h2').text, 'Add a contact')
         time.sleep(1)
 
         # vérifier l'interface de la page addContact
-        text = self.browser.find_element('tag name', 'h1').text
-        self.assertEqual(text, 'Contacts Booklet')
-        text = self.browser.find_element('tag name', 'h2').text
-        self.assertEqual(text, 'Add a contact')
-        text = self.browser.find_element('tag name', 'img').get_attribute('src')
-        self.assertEqual(text, self.live_server_url + '/image/image/no-image.png')
-        text = self.browser.find_elements('tag name', 'label')[0].text
-        self.assertEqual(text, 'First name:')
-        text = self.browser.find_elements('tag name', 'label')[1].text
-        self.assertEqual(text, 'Last name:')
-        text = self.browser.find_elements('tag name', 'label')[2].text
-        self.assertEqual(text, 'E-mail:')
-        text = self.browser.find_elements('tag name', 'label')[3].text
-        self.assertEqual(text, 'Telephone n°1:')
-        text = self.browser.find_elements('tag name', 'label')[4].text
-        self.assertEqual(text, 'Telephone n°2:')
-        text = self.browser.find_elements('tag name', 'label')[5].text
-        self.assertEqual(text, 'Picture:')
+        self.assertEqual(self.browser.find_element('tag name', 'h1').text, 'Contacts Booklet')
+        self.assertEqual(self.browser.find_element('tag name', 'h2').text, 'Add a contact')
+        text = self.live_server_url + '/image/image/no-image.png'
+        self.assertEqual(self.browser.find_element('tag name', 'img').get_attribute('src'), text)
+        liste1 = ['First name:', 'Last name:', 'E-mail:', 'Telephone n°1:', 'Telephone n°2:', 'Picture:']
+        for i in range(len(liste1)):
+            self.assertEqual(self.browser.find_elements('tag name', 'label')[i].text, liste1[i])
+        for i in range(len(liste1)):
+            self.assertEqual(self.browser.find_elements('tag name', 'input')[i].text, '')
 
         # vérifier le fonctionnement bouton back
         self.browser.find_element('tag name', 'a').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.contacts_url)
-        text = self.browser.find_element('id', 'contacts').text
-        self.assertEqual(text, 'contacts')
+        self.assertIn('number of contacts:', self.browser.find_element('id', 'count_contacts').text)
         time.sleep(1)
 
-        # vérifier le fonctionnement du formulaire pour des données non valides
+        # retour sur la page addContact
+        self.browser.get(self.live_server_url + self.add_contact_url)
+        time.sleep(1)
+
+        # vérifier la limitation des champs
+        text = 'a_entry_with_more_than_thirty_or_forty_characters'
+        liste1 = [text[:30], text[:30], text[:40], text[:30], text[:30]]
+        for i in range(len(liste1)):
+            self.browser.find_elements('tag name', 'input')[i].send_keys(text)
+            self.assertEqual(self.browser.find_elements('tag name', 'input')[i].get_attribute('value'), liste1[i])
+        time.sleep(1)
+
+        # vérifier le fonctionnement du formulaire pour des champs requis vides
         self.browser.get(self.live_server_url + self.add_contact_url)
         time.sleep(1)
         self.browser.find_element('tag name', 'button').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
         time.sleep(1)
-
         self.browser.find_elements('tag name', 'input')[0].send_keys('first_name')
         self.browser.find_element('tag name', 'button').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
         time.sleep(1)
 
-        self.browser.find_elements('tag name', 'input')[0].clear()
+        # vérifier le fonctionnement du formulaire pour un email non valide
         self.browser.find_elements('tag name', 'input')[1].send_keys('last_name')
-        self.browser.find_element('tag name', 'button').click()
-        self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
         time.sleep(1)
-
-        self.browser.find_elements('tag name', 'input')[0].send_keys('first_name')
-        self.browser.find_elements('tag name', 'input')[2].send_keys('email')
-        self.browser.find_element('tag name', 'button').click()
-        self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
-        time.sleep(1)
-
-        self.browser.find_elements('tag name', 'input')[2].clear()
-        self.browser.find_elements('tag name', 'input')[2].send_keys('email.fr')
-        self.browser.find_element('tag name', 'button').click()
-        self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
-        time.sleep(1)
-
-        self.browser.find_elements('tag name', 'input')[2].clear()
-        self.browser.find_elements('tag name', 'input')[2].send_keys('no_valid@email')
-        self.browser.find_element('tag name', 'button').click()
-        self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
-        ul = self.browser.find_element('class name', 'errorlist')
-        text = ul.find_element('tag name', 'li').text
-        self.assertEqual(text, 'Enter a valid email address.')
-        time.sleep(1)
+        liste1 = ['email', 'email.fr', 'no_valid@email']
+        for i in range(len(liste1)):
+            self.browser.find_elements('tag name', 'input')[2].clear()
+            self.browser.find_elements('tag name', 'input')[2].send_keys(liste1[i])
+            self.browser.find_element('tag name', 'button').click()
+            self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
+            if(liste1[i] == 'no_valid@email'):
+                ul = self.browser.find_element('class name', 'errorlist')
+                text = 'Enter a valid email address.'
+                self.assertEqual(ul.find_element('tag name', 'li').text, text)
+            time.sleep(1)
 
         # vérifier le fonctionnement du formulaire pour des données valides minimales
         self.browser.find_elements('tag name', 'input')[2].clear()
+        time.sleep(1)
         self.browser.find_element('tag name', 'button').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.contacts_url)
-        text = self.browser.find_element('id', 'contacts').text
-        self.assertEqual(text, 'contacts')
+        self.assertIn('number of contacts:', self.browser.find_element('id', 'count_contacts').text)
         time.sleep(1)
 
         # vérifier l'ajout du contact
@@ -151,32 +137,24 @@ class Test0Contact(LiveServerTestCase):
         td_buttons.find_elements('tag name', 'button')[0].click()
         id = Contact.objects.filter(fk_user = self.user1, first_name = 'first_name', last_name = 'last_name')[0].id
         self.assertEqual(self.browser.current_url, self.live_server_url + reverse('contactDetails', kwargs={'id': id,}))
-        text = self.browser.find_element('tag name', 'h2').text
-        self.assertEqual(text, 'Contact details')
-        text = self.browser.find_elements('class name', 'info')[0].text
-        self.assertEqual(text, 'first_name')
-        text = self.browser.find_elements('class name', 'info')[1].text
-        self.assertEqual(text, 'last_name')
-        text = self.browser.find_elements('class name', 'info')[2].text
-        self.assertEqual(text, '')
-        text = self.browser.find_elements('class name', 'info')[3].text
-        self.assertEqual(text, '')
-        text = self.browser.find_elements('class name', 'info')[4].text
-        self.assertEqual(text, '')
-        text = self.browser.find_element('tag name', 'img').get_attribute('src')
-        self.assertEqual(text, self.live_server_url + self.src_no_image)
+        self.assertEqual(self.browser.find_element('tag name', 'h2').text, 'Contact details')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[0].text, 'first_name')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[1].text, 'last_name')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[2].text, '')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[3].text, '')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[4].text, '')
+        text = self.live_server_url + self.src_no_image
+        self.assertEqual(self.browser.find_element('tag name', 'img').get_attribute('src'), text)
         time.sleep(1)
 
         # retour sur la page Addcontact
         self.browser.get(self.live_server_url + self.contacts_url)
         self.assertEqual(self.browser.current_url, self.live_server_url + self.contacts_url)
-        text = self.browser.find_element('id', 'contacts').text
-        self.assertEqual(text, 'contacts')
+        self.assertEqual(self.browser.find_element('id', 'contacts').text, 'contacts')
         time.sleep(1)
         self.browser.find_element('id', 'add_btn').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.add_contact_url)
-        text = self.browser.find_element('tag name', 'h2').text
-        self.assertEqual(text, 'Add a contact')
+        self.assertEqual(self.browser.find_element('tag name', 'h2').text, 'Add a contact')
         time.sleep(1)
 
         # vérifier le fonctionnement du formulaire pour des données valides et complètes
@@ -185,12 +163,12 @@ class Test0Contact(LiveServerTestCase):
         self.browser.find_elements('tag name', 'input')[2].send_keys('valid@email.com')
         self.browser.find_elements('tag name', 'input')[3].send_keys('06 00 00 00 01')
         self.browser.find_elements('tag name', 'input')[4].send_keys('02 00 00 00 01')
-        self.browser.find_elements('tag name', 'input')[5].send_keys('C:/Users/adriv/Documents/application_rncp/application/functional_tests/image_tests.jpg')
+        text = os.getcwd() + '/functional_tests/image_tests.jpg'
+        self.browser.find_elements('tag name', 'input')[5].send_keys(text)
         time.sleep(1)
         self.browser.find_element('tag name', 'button').click()
         self.assertEqual(self.browser.current_url, self.live_server_url + self.contacts_url)
-        text = self.browser.find_element('id', 'contacts').text
-        self.assertEqual(text, 'contacts')
+        self.assertIn('number of contacts:', self.browser.find_element('id', 'count_contacts').text)
         time.sleep(1)
 
         # vérifier l'ajout du contact
@@ -215,24 +193,18 @@ class Test0Contact(LiveServerTestCase):
         td_buttons.find_elements('tag name', 'button')[0].click()
         id = Contact.objects.filter(fk_user = self.user1, first_name = 'first_name_bis', last_name = 'last_name_bis')[0].id
         self.assertEqual(self.browser.current_url, self.live_server_url + reverse('contactDetails', kwargs={'id': id,}))
-        text = self.browser.find_element('tag name', 'h2').text
-        self.assertEqual(text, 'Contact details')
-        text = self.browser.find_elements('class name', 'info')[0].text
-        self.assertEqual(text, 'first_name_bis')
-        text = self.browser.find_elements('class name', 'info')[1].text
-        self.assertEqual(text, 'last_name_bis')
-        text = self.browser.find_elements('class name', 'info')[2].text
-        self.assertEqual(text, 'valid@email.com')
-        text = self.browser.find_elements('class name', 'info')[3].text
-        self.assertEqual(text, '06 00 00 00 01')
-        text = self.browser.find_elements('class name', 'info')[4].text
-        self.assertEqual(text, '02 00 00 00 01')
-        text = self.browser.find_element('tag name', 'img').get_attribute('src')
-        self.assertEqual(text, self.live_server_url + self.src_image_tests)
+        self.assertEqual(self.browser.find_element('tag name', 'h2').text, 'Contact details')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[0].text, 'first_name_bis')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[1].text, 'last_name_bis')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[2].text, 'valid@email.com')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[3].text, '06 00 00 00 01')
+        self.assertEqual(self.browser.find_elements('class name', 'info')[4].text, '02 00 00 00 01')
+        text = self.live_server_url + self.src_image_tests
+        self.assertEqual(self.browser.find_element('tag name', 'img').get_attribute('src'), text)
         time.sleep(1)
 
         # supprimer l'image
-        os.remove('C:/Users/adriv/Documents/application_rncp/application' + self.src_image_tests_remove)
+        os.remove(os.getcwd() + self.src_image_tests_remove)
         
         # fermeture de l'application à la fin des tests
         self.browser.close()

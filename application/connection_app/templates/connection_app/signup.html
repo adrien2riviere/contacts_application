@@ -8,4 +8,8 @@
         {% csrf_token %}
         <button type="submit" >Sign up</button>
     </form>
+    <script>
+        document.getElementsByTagName('input')[4].maxLength = 50
+        document.getElementsByTagName('input')[5].maxLength = 50
+    </script>
 {% endblock content %}

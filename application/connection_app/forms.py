@@ -10,8 +10,9 @@ class LoginForm(forms.Form):
 class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('username','email', 'first_name', 'last_name')
     username = forms.CharField(max_length=30)
     email = forms.CharField(max_length=40)
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=30)
+    
