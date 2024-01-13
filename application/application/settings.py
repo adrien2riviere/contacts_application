@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a$6n3w_rz9kx=@+^u^l#121$fe(mh6^kublhj36s*7*8&e@n7r'
+??? = '???'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,10 +91,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'contacts_db',  
-        'USER': 'root',  
-        'PASSWORD': 'root',  
-        'HOST': '127.0.0.1',  
-        'PORT': '3306',  
+        'USER': '???',  
+        'PASSWORD': '???',  
+        'HOST': '???.?.?.?',  
+        'PORT': '???',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
@@ -176,14 +176,14 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True # la session se ferme à la fermeture du 
 
 #SMTP CONFIGURATION
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'smtp-mail.outlook.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-#EMAIL_USE_STARTTLS = True
-EMAIL_USE_TLS = True # protocole TLS pour l'envoi d'email
-SMTP_ENABLED = True
-EMAIL_HOST_USER = 'adrien.riv45@gmail.com'
-EMAIL_HOST_PASSWORD = 'wwpnvufbbbpikrax'
+#EMAIL_HOST = '???'
+EMAIL_HOST = '???'
+EMAIL_PORT = ???
+#EMAIL_USE_START??? = True
+EMAIL_USE_??? = True # protocole TLS pour l'envoi d'email
+???_ENABLED = True
+EMAIL_HOST_??? = '???'
+EMAIL_HOST_??? = '???'
 #env('RECIPIENT_ADDRESS')
 
 
